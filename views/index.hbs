@@ -11,6 +11,7 @@
         <h4>COOKIE</h4>
     </nav>
     <form action="/login" method="post">
+        <input type="hidden" name="_csrf" value="{{csrfToken}}">
         <label>Login</label>
         <input type="text" id="login" name="login">
         <label>Senha</label>

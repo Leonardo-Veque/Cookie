@@ -8,6 +8,10 @@ const cookieParser = require("cookie-parser");
 // Inicializar o express
 const app = express();
 
+//Importação do CSRF
+const csrf = require("csurf");
+
+//Importação do bcrypt para encrypt a senha
 const bcrypt = require("bcrypt");
 const saltRounds = 10;
 
@@ -47,6 +51,13 @@ const publicDirectory = path.join(__dirname);
 app.use(express.static(publicDirectory));
 console.log(__dirname);
 
+app.use(csrf({ cookie: true }));
+app.use((req, res, next) => {
+  res.locals.csrfToken = req.csrfToken();
+
+  next();
+});
+
 const produtos = [
   {
     id: 1,
@@ -77,19 +88,17 @@ app.set("view engine", "hbs");
 
 //Rota inicial
 app.get("/", (req, res) => {
-  res.render("index");
+  res.render("index", { csrfToken: req.csrfToken() });
 });
 
 //Auth
 app.post("/login", async (req, res) => {
-  console.log(req.body);
   const login = req.body.login;
   //Encriptando a senha
   const senha = req.body.senha;
 
   db.query("SELECT * FROM login WHERE login = ? ", [login], (err, results) => {
     const result = results[0];
-
     bcrypt.compare(senha, result.senha).then(function (match) {
       if (match) {
         res.redirect("/produtos");
@@ -161,6 +170,8 @@ async function hashPassword(senha) {
   try {
     const salt = await bcrypt.genSalt(saltRounds);
     const hash = await bcrypt.hash(senha, salt);
+    console.log("Senha encriptada:", hash);
+
     return hash;
   } catch (error) {
     throw error;
