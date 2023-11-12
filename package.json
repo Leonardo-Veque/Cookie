@@ -20,7 +20,7 @@
   "scripts": {
     "dev": "nodemon app.js",
     "start": "node app.js",
-    "build": "your-build-command"
+    "build": "netlify.toml"
   },
   "keywords": [],
   "author": "",
