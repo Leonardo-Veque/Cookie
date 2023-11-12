@@ -9,7 +9,6 @@
     "express-session": "^1.17.3",
     "hbs": "^4.2.0",
     "jsonwebtoken": "^9.0.2",
-    "mysql2": "^3.6.3",
     "toastify-js": "^1.12.0",
     "y": "^0.3.2"
   },
@@ -23,8 +22,5 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": "",
-  "devDependencies": {
-  }
-  
+  "description": ""
 }

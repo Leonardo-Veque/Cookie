@@ -1,0 +1,17 @@
+[
+	{
+		"idLogin" : 1,
+		"login" : "Leonardo",
+		"senha" : "$2b$10$c.ugQBBijT6AYjA6NY9SHOUfnLCeiBEQHB/oeASHlgdNTqSXD8aBy"
+	},
+	{
+		"idLogin" : 2,
+		"login" : "eng-soft",
+		"senha" : "123#$%bobbyjones&&*"
+	},
+	{
+		"idLogin" : 3,
+		"login" : "desafio",
+		"senha" : "$2b$10$9liDFyhi.3hZF5u56O0.2eShvB8DPuGCRVPVMcQXt0rtRRCQEHGgq"
+	}
+]

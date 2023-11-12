@@ -1,3 +1,5 @@
+const fs = require("fs");
+
 //Importar o express
 const express = require("express");
 
@@ -36,14 +38,14 @@ dotenv.config({
 });
 
 //Importação do mysql
-const mysql = require("mysql2");
+// const mysql = require("mysql2");
 
-const db = mysql.createConnection({
-  host: process.env.DARTABASE_HOST,
-  user: process.env.DATABASE_USER,
-  password: process.env.DATABASE_PASSWORD,
-  database: process.env.DATABASE,
-});
+// const db = mysql.createConnection({
+//   host: process.env.DARTABASE_HOST,
+//   user: process.env.DATABASE_USER,
+//   password: process.env.DATABASE_PASSWORD,
+//   database: process.env.DATABASE,
+// });
 
 //Importação do path
 const path = require("path", "../public");
@@ -75,13 +77,13 @@ const produtos = [
   },
 ];
 
-db.connect((error) => {
-  if (error) {
-    console.log(error);
-  } else {
-    console.log("Conecção feita");
-  }
-});
+// db.connect((error) => {
+//   if (error) {
+//     console.log(error);
+//   } else {
+//     console.log("Conecção feita");
+//   }
+// });
 
 app.set("view engine", "hbs");
 
@@ -96,17 +98,41 @@ app.post("/login", async (req, res) => {
   //Encriptando a senha
   const senha = req.body.senha;
 
-  db.query("SELECT * FROM login WHERE login = ? ", [login], (err, results) => {
-    const result = results[0];
+  // db.query("SELECT * FROM login WHERE login = ? ", [login], (err, results) => {
+  //   const result = results[0];
 
-    bcrypt.compare(senha, result.senha).then(function (match) {
-      if (match) {
-        res.redirect("/produtos");
-      } else {
-        res.redirect("/");
-        console.log("Senha incorreta");
-      }
-    });
+  //   bcrypt.compare(senha, result.senha).then(function (match) {
+  //     if (match) {
+  //       res.redirect("/produtos");
+  //     } else {
+  //       res.redirect("/");
+  //       console.log("Senha incorreta");
+  //     }
+  //   });
+  // });
+
+  fs.readFile("./login.json", (err, file) => {
+    if (err) {
+      res.statusCode = 500;
+      res.end(err.code);
+      return;
+    }
+    const logins = JSON.parse(file);
+
+    for (let i = 0; i < logins.length; i++) {
+      const log = logins[i];
+
+      if (log.login != login) continue;
+
+      bcrypt.compare(senha, log.senha).then(function (match) {
+        if (match) {
+          res.redirect("/produtos");
+        } else {
+          res.redirect("/");
+          console.log("Senha incorreta");
+        }
+      });
+    }
   });
 });
 
