@@ -84,7 +84,7 @@ const produtos = [
 //     console.log("Conecção feita");
 //   }
 // });
-
+app.set("views", __dirname + "/views");
 app.set("view engine", "hbs");
 
 //Rota inicial
