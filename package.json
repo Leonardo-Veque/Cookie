@@ -19,7 +19,8 @@
   "type": "commonjs",
   "scripts": {
     "dev": "nodemon app.js",
-    "start": "node app.js"
+    "start": "node app.js",
+    "build": "your-build-command"
   },
   "keywords": [],
   "author": "",
@@ -28,4 +29,6 @@
   "devDependencies": {
     "nodemon": "^3.0.1"
   }
+ 
+  
 }

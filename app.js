@@ -49,7 +49,6 @@ const db = mysql.createConnection({
 const path = require("path", "../public");
 const publicDirectory = path.join(__dirname);
 app.use(express.static(publicDirectory));
-console.log(__dirname);
 
 app.use(csrf({ cookie: true }));
 app.use((req, res, next) => {
@@ -99,6 +98,7 @@ app.post("/login", async (req, res) => {
 
   db.query("SELECT * FROM login WHERE login = ? ", [login], (err, results) => {
     const result = results[0];
+
     bcrypt.compare(senha, result.senha).then(function (match) {
       if (match) {
         res.redirect("/produtos");
@@ -112,21 +112,7 @@ app.post("/login", async (req, res) => {
 
 // Rota inical para exibir produtos
 app.get("/produtos", (req, res) => {
-  res.send(`
-        <h1>Lista de produtos</h1>
-        <ul>
-            ${produtos
-              .map(
-                (produto) =>
-                  `<li>
-                    ${produto.nome} - ${produto.preco}<a href="/adicionar/${produto.id}">Adicionar ao carrinho</a>
-                    </li>`
-              )
-              .join("")}
-
-        </ul>
-        <a href = "/carrinho">Ver Carrinho</a>
-    `);
+  res.render("produtos", { produtos });
 });
 
 //Rota de Adicionar
@@ -148,29 +134,13 @@ app.get("/carrinho", (req, res) => {
   const carrinho = req.session.carrinho || [];
   const total = carrinho.reduce((acc, produto) => acc + produto.preco, 0);
 
-  res.send(`
-        <h1>Carrinho de compras</h1>
-        <ul>
-            ${carrinho
-              .map(
-                (produto) =>
-                  `<li>
-                    ${produto.nome} - ${produto.preco}
-                        </li>`
-              )
-              .join("")}
-
-        </ul>
-        <p>Total: ${total}</p>
-        <a href="/produtos">Continuar comprando</a>
-    `);
+  res.render("carrinho", { carrinho, total });
 });
 
 async function hashPassword(senha) {
   try {
     const salt = await bcrypt.genSalt(saltRounds);
     const hash = await bcrypt.hash(senha, salt);
-    console.log("Senha encriptada:", hash);
 
     return hash;
   } catch (error) {

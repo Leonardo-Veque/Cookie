@@ -4,19 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../public/style.css">
-    <title>Document</title>
+    <title>Login</title>
 </head>
 <body>
-    <nav>
+    <nav class="header-login">
         <h4>COOKIE</h4>
     </nav>
-    <form action="/login" method="post">
-        <input type="hidden" name="_csrf" value="{{csrfToken}}">
-        <label>Login</label>
-        <input type="text" id="login" name="login">
-        <label>Senha</label>
-        <input type="password" id="senha" name="senha">
-        <button>Enviar</button>
-    </form>
+    <div id="container-login">
+        <form action="/login" method="post" id="login-form" >
+            <h1>LOGIN</h1>
+            <input type="hidden" name="_csrf" value="{{csrfToken}}">
+            <label>Login</label class="label">
+            <input type="text" id="login" name="login" class="inputs">
+            <label>Senha</label>
+            <input type="password" id="senha" name="senha" class="inputs">
+            <button class="botao">Enviar</button>
+        </form>
+    </div>
 </body>
 </html>

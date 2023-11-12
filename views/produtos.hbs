@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="stylesheet" href="../public/style.css">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <h1>Lista de produtos</h1>
+    </header>
+
+    <nav>
+        <a href="#">Home</a>
+        <a href="#">Sobre</a>
+        <a href="#">Serviços</a>
+        <a href="#">Contato</a>
+    </nav>
+    <div class="container">
+        <div class="main-content">
+            <ul>
+            {{#each produtos}}
+                <li>
+                    {{nome}} - {{preco}}<a href="/adicionar/{{id}}" class="a">Adicionar ao carrinho</a>
+                </li>
+            {{/each}}
+            </ul>
+            <a href="/carrinho" class="a">Ver Carrinho</a>
+        </div>
+    </div>
+
+</body>
+</html>
