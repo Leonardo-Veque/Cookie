@@ -48,8 +48,8 @@ dotenv.config({
 // });
 
 //Importação do path
-const path = require("path", "public");
-const publicDirectory = path.join(__dirname);
+const path = require("path", __dirname + "/public");
+const publicDirectory = path.join("");
 app.use(express.static(publicDirectory));
 
 app.use(csrf({ cookie: true }));
