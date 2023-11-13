@@ -4,16 +4,44 @@
 }
 .header-login{
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
-    background: #fff;
+    background: #6e5eff;
+    padding: 20px;
     width: 100%;
     top: 0;
     display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+}
+
+.h4{
+    font-size: 20px;
+    color: #333;
+    padding-left: 20px;
+    align-items: center;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.fonte{
+    font-size: 20px;
+    color: #333;
+    padding-left: 20px;
+    align-items: center;
+    justify-content: center;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 #container-login{
-    height: 100vh;
     width: 100%;
-    background-color: #fff;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#container-logindois{
+    width: 100%;
+    background-color: #c192ff;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -24,8 +52,9 @@
     flex-direction: column;
     padding: 30px 40px;
     border-radius: 10px;
-    gap: 30px;
-    border: 1px solid black;
+    gap: 10px;
+    border-style: hidden;
+    background-color: #88ffe5;
 }
 
 .inputs{
@@ -33,14 +62,18 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 20px;
     border-radius: 8px;
+    border-style: hidden;
     height: 25px;
 }
 
 .label{
-    font-size: 14px;
+    font-size: 20px;
     color: black;
+    padding-left: 20px;
+    align-items: center;
+    justify-content: center;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .botao{
@@ -78,6 +111,7 @@ nav {
 
 nav a {
     color: #fff;
+    justify-content: center;
     text-decoration: none;
     margin: 0 15px;
     font-size: 16px;
@@ -91,26 +125,41 @@ nav a:hover {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 80%;
+    width: 30%;
     margin: 0 auto;
+    display: flex;
+    padding: 30px 40px;
+    border-radius: 10px;
+    border-style: hidden;
+    text-align: center;
+    justify-content: center;
+    background-color: #88ffe5;
 }
 
 .main-content {
     width: 100%;
     padding: 20px;
     box-sizing: border-box;
+    justify-content: center;
+    align-items: center;
+    color: #000000;
+    text-align: center;
 }
 
 .a{
-    border: #333 solid 1px;
-    border-radius: 5px; 
-    display: flex;
+    border: #000000 solid 1px;
+    border-style: hidden;
+    border-radius: 5px;
+    padding: 3px; 
+    display: center;
     text-align: center;
-    width: 125px;
-    color:#73877B; 
-    margin: 30px 40px;
+    justify-content: center;
+    align-items: center;
+    background-color:#30d180; 
+    color: #000000;
     text-decoration: none;
 }
+
 li{
     margin: 20px 10px;
 }
@@ -119,6 +168,6 @@ p{
 }
 
 .a:hover{
-    background-color: #839788;
-    color: #444;
+    background-color: #27a767;
+    color: #000000;
 }
