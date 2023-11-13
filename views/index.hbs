@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/style.css">
+    <title>Login</title>
+</head>
+<body>
+    <nav class="header-login">
+        <h4>PROJETO COOKIE</h4>
+    </nav>
+    <div id="container-login">
+        <form action="/login" method="post" id="login-form" >
+            <h1>LOGIN</h1>
+            <input type="hidden" name="_csrf" value="{{csrfToken}}">
+            <label>Usuário</label class="label">
+            <input type="text" id="login" name="login" class="inputs">
+            <label>Senha</label class="label">
+            <input type="password" id="senha" name="senha" class="inputs">
+            <button class="botao">Enviar</button>
+        </form>
+    </div>
+</body>
+</html>
